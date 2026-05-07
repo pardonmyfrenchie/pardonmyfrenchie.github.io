@@ -2,82 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Someone. - Life Simulation by Pardon My French">
-    <title>Someone. — Pardon My French</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root { --bg: #080808; --mint: #a8d5c2; --ink: #c8c4bc; --ink-soft: #555048; --line: #181818; }
-        body { background: var(--bg); color: var(--ink); font-family: 'Outfit', sans-serif; min-height: 100vh; padding-top: 110px; }
-        nav { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: center; gap: 1.6rem; padding: 1.8rem 0;
-              z-index: 100; background: rgba(8,8,8,0.95); backdrop-filter: blur(12px); }
-        .dot-wrap { position: relative; }
-        .dot { width: 11px; height: 11px; border-radius: 50%; border: 1px solid #3a3a3a; transition: all 0.3s; }
-        .dot-wrap:hover .dot { border-color: var(--mint); }
-        .dot-wrap.current .dot { background: var(--mint); border-color: var(--mint); }
-        .tooltip { position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); background: #111; color: var(--mint);
-                   font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.4rem 0.8rem; opacity: 0; transition: opacity 0.2s; border: 1px solid #222; }
-        .dot-wrap:hover .tooltip { opacity: 1; }
-
-        .header-studio {
-            font-size: clamp(0.55rem, 1.5vw, 0.72rem);
-            font-weight: 500;
-            letter-spacing: 0.35em;
-            color: #555048;
-            text-transform: uppercase;
-            text-align: center;
-            padding: 1.2rem 0 0.8rem;
-        }
-        .hero { padding: 3rem 10vw 4rem; text-align: center; }
-        .hero-title { font-size: clamp(2.2rem, 6vw, 3.8rem); font-weight: 300; letter-spacing: -0.02em; color: var(--mint); margin-bottom: 1rem; }
-        .hero-tagline { font-size: 1.25rem; color: var(--ink-soft); max-width: 700px; margin: 0 auto; line-height: 1.4; }
-        .desc-section { padding: 5rem 10vw; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; }
-        .detail-strip { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); }
-        .detail-cell { padding: 2.5rem 2rem 2.5rem 10vw; border-right: 1px solid var(--line); }
-        .detail-cell:last-child { border-right: none; }
-        footer { padding: 2.5rem 10vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid var(--line); }
-        @media (max-width: 768px) {
-            .desc-section { grid-template-columns: 1fr; padding: 4rem 2rem; }
-            .detail-strip { grid-template-columns: 1fr 1fr; }
-            .detail-cell { padding: 2rem; }
-        }
+        body { background: var(--bg); color: var(--ink); font-family: 'Outfit', sans-serif; padding: 2rem; }
+        .hero-title { font-size: 2.5rem; color: var(--mint); font-weight: 300; margin-bottom: 0.5rem; }
+        .hero-tagline { color: var(--ink-soft); font-size: 1.1rem; margin-bottom: 2rem; }
+        .desc { font-size: 0.9rem; line-height: 1.8; color: var(--ink-soft); margin-bottom: 2rem; max-width: 600px; }
+        .detail-strip { display: flex; gap: 2rem; border-top: 1px solid var(--line); padding-top: 1.5rem; }
+        .label { font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: #444; }
+        .val { color: var(--mint); font-size: 0.85rem; }
+        .back-btn { display: inline-block; margin-top: 3rem; color: #555; text-decoration: none; font-size: 0.7rem; text-transform: uppercase; }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="dot-wrap"><a href="index.html" style="text-decoration:none"><div class="dot"></div></a><span class="tooltip">Home</span></div>
-        <div class="dot-wrap"><a href="games-landing.html" style="text-decoration:none"><div class="dot"></div></a><span class="tooltip">Games</span></div>
-        <div class="dot-wrap"><a href="privacy-landing.html" style="text-decoration:none"><div class="dot"></div></a><span class="tooltip">Privacy</span></div>
-        <div class="dot-wrap"><a href="mailto:zuabino@gmail.com" style="text-decoration:none"><div class="dot"></div></a><span class="tooltip">Contact</span></div>
-    </nav>
-
-    <div class="header-studio">Pardon My French</div>
-
-    <section class="hero">
-        <h1 class="hero-title">Someone.</h1>
-        <p class="hero-tagline">Suncity looks like a good place to start over.</p>
-    </section>
-
-    <section class="desc-section">
-        <p style="font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--ink-soft);">About</p>
-        <div style="font-size:0.9rem; line-height:1.9; color:var(--ink-soft);">
-            <p>Everyone here has a history. Some of them will share it with you. Some of them will make it your problem.</p>
-            <p>Dress how you want. Love who you want. Build something — a career, a reputation, a life — and watch what the neighbours do with that information.</p>
-            <p>Some stories end in a wedding. Some end in a transfer of assets.</p>
-        </div>
-    </section>
-
-    <div class="detail-strip">
-        <div class="detail-cell"><p style="font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-soft);">Platform</p><p style="color:var(--mint);">Android</p></div>
-        <div class="detail-cell"><p style="font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-soft);">Genre</p><p style="color:var(--mint);">Life Simulation</p></div>
-        <div class="detail-cell"><p style="font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-soft);">Rating</p><p style="color:var(--mint);">PEGI 12</p></div>
-        <div class="detail-cell"><p style="font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-soft);">Status</p><p style="color:var(--mint);">Coming soon</p></div>
+    <h1 class="hero-title">Someone.</h1>
+    <p class="hero-tagline">Suncity looks like a good place to start over.</p>
+    
+    <div class="desc">
+        <p>Everyone here has a history. Some of them will share it with you. Some of them will make it your problem.</p>
+        <p>Dress how you want. Love who you want. Build something — a career, a reputation, a life.</p>
     </div>
 
-    <footer>
-        <a href="games-landing.html" style="color:var(--ink-soft);text-decoration:none;">← Games</a>
-        <p style="color:#2a2a2a;">© 2026</p>
-    </footer>
+    <div class="detail-strip">
+        <div><p class="label">Platform</p><p class="val">Android</p></div>
+        <div><p class="label">Genre</p><p class="val">Life Sim</p></div>
+        <div><p class="label">Status</p><p class="val">Coming soon</p></div>
+    </div>
+
+    <a href="games.html" class="back-btn">← Back to List</a>
 </body>
 </html>
