@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Privacy Policy — Someone</title>
+    <title>Privacy Policy — Pardon My French</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,12 +22,10 @@
             background: var(--bg);
             color: var(--ink);
             font-family: 'Outfit', sans-serif;
-            font-weight: 300;
-            line-height: 1.75;
             min-height: 100vh;
         }
 
-        /* NAVBAR */
+        /* NAV */
         nav {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -36,7 +34,7 @@
             gap: 1.4rem;
             padding: 1.6rem 0;
             z-index: 100;
-            background: rgba(8,8,8,0.9);
+            background: rgba(8,8,8,0.92);
             backdrop-filter: blur(8px);
         }
 
@@ -91,141 +89,174 @@
 
         .dot-wrap:hover .tooltip { opacity: 1; }
 
-        /* HEADER */
-        header {
-            padding: 8rem 12vw 4rem;
+        /* TITLE BLOCK — full width, front and center */
+        .title-block {
+            padding: 7rem 10vw 4rem;
             border-bottom: 1px solid var(--line);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        .studio {
+        .title-eyebrow {
             font-size: 0.62rem;
             font-weight: 500;
             letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--ink-soft);
-            margin-bottom: 2rem;
         }
 
-        header h1 {
-            font-size: clamp(2.5rem, 7vw, 5rem);
-            font-weight: 300;
-            line-height: 1;
+        .title-block h1 {
+            font-size: clamp(0.9rem, 1.8vw, 1.15rem);
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
             color: var(--mint);
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
         }
 
-        .meta {
-            font-size: 0.72rem;
-            font-weight: 400;
-            letter-spacing: 0.1em;
+        .title-meta {
+            font-size: 0.68rem;
+            font-weight: 300;
+            letter-spacing: 0.08em;
             color: var(--ink-soft);
         }
 
-        /* MAIN */
-        main {
-            max-width: 100%;
-            padding: 0 12vw 6rem;
+        /* SIDEBAR LAYOUT */
+        .content-layout {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            min-height: calc(100vh - 200px);
+        }
+
+        /* SIDEBAR NAV */
+        .sidebar {
+            border-right: 1px solid var(--line);
+            padding: 3rem 2rem 3rem 10vw;
+            position: sticky;
+            top: 54px;
+            height: calc(100vh - 54px);
+            overflow-y: auto;
+        }
+
+        .sidebar-label {
+            font-size: 0.55rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+
+        .sidebar-link {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--ink-soft);
+            text-decoration: none;
+            padding: 0.45rem 0;
+            border-bottom: 1px solid transparent;
+            transition: color 0.2s;
+            line-height: 1.4;
+        }
+
+        .sidebar-link:hover { color: var(--mint); }
+        .sidebar-link.active { color: var(--mint); }
+
+        /* MAIN CONTENT */
+        .main-content {
+            padding: 3rem 10vw 6rem 4rem;
         }
 
         .intro {
-            font-size: 0.92rem;
+            font-size: 0.88rem;
             font-weight: 300;
             color: var(--ink-soft);
             line-height: 1.9;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--line);
+            margin-bottom: 0;
+            max-width: 640px;
+        }
+
+        /* SECTIONS */
+        .policy-section {
             padding: 3rem 0;
             border-bottom: 1px solid var(--line);
             max-width: 640px;
         }
 
-        /* ACCORDION */
-        .section {
-            border-bottom: 1px solid var(--line);
-        }
-
-        .section-toggle {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.75rem 0;
-            cursor: pointer;
-            user-select: none;
-            gap: 1rem;
+        .policy-section:last-of-type {
+            border-bottom: none;
         }
 
         .section-title {
-            font-size: 0.82rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--ink);
-            transition: color 0.2s;
+            margin-bottom: 1.5rem;
         }
 
-        .section-toggle:hover .section-title { color: var(--mint); }
-
-        .chevron {
-            width: 18px;
-            height: 18px;
-            flex-shrink: 0;
-            color: var(--ink-soft);
-            transition: transform 0.3s ease;
-        }
-
-        .section.open .chevron { transform: rotate(180deg); }
-
-        .section-body {
-            display: none;
-            padding-bottom: 2rem;
+        .policy-section p {
             font-size: 0.88rem;
             font-weight: 300;
             color: var(--ink-soft);
             line-height: 1.9;
-            max-width: 640px;
+            margin-bottom: 1rem;
         }
 
-        .section.open .section-body { display: block; }
+        .policy-section p:last-child { margin-bottom: 0; }
 
-        .section-body p { margin-bottom: 1rem; }
-        .section-body p:last-child { margin-bottom: 0; }
-
-        .section-body ul {
+        .policy-section ul {
             padding-left: 1.25rem;
             margin-bottom: 1rem;
         }
 
-        .section-body li { margin-bottom: 0.4rem; }
+        .policy-section li {
+            font-size: 0.88rem;
+            font-weight: 300;
+            color: var(--ink-soft);
+            line-height: 1.9;
+            margin-bottom: 0.3rem;
+        }
 
-        .section-body a {
+        .policy-section a {
             color: var(--mint);
             text-decoration: none;
             border-bottom: 1px solid transparent;
             transition: border-color 0.2s;
         }
 
-        .section-body a:hover { border-color: var(--mint); }
+        .policy-section a:hover { border-color: var(--mint); }
 
         /* CONTACT BLOCK */
         .contact-block {
             margin-top: 3rem;
-            padding: 2rem;
+            padding: 1.75rem 2rem;
             border: 1px solid var(--line);
             max-width: 640px;
         }
 
-        .contact-block .label {
-            font-size: 0.6rem;
-            font-weight: 500;
+        .contact-label {
+            font-size: 0.55rem;
+            font-weight: 600;
             letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--ink-soft);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.6rem;
         }
 
         .contact-block p {
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             font-weight: 300;
             color: var(--ink-soft);
+            line-height: 1.7;
         }
 
         .contact-block a {
@@ -239,7 +270,7 @@
 
         /* FOOTER */
         footer {
-            padding: 2.5rem 12vw;
+            padding: 2.5rem 10vw;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -249,7 +280,7 @@
         }
 
         footer a {
-            font-size: 0.68rem;
+            font-size: 0.65rem;
             font-weight: 500;
             letter-spacing: 0.15em;
             text-transform: uppercase;
@@ -261,14 +292,22 @@
         footer a:hover { color: var(--mint); }
 
         footer p {
-            font-size: 0.68rem;
-            letter-spacing: 0.1em;
+            font-size: 0.65rem;
             color: #2a2a2a;
+            letter-spacing: 0.1em;
         }
 
         @media (max-width: 768px) {
-            header { padding: 7rem 2rem 3rem; }
-            main { padding: 0 2rem 4rem; }
+            .title-block { padding: 6rem 2rem 3rem; }
+            .content-layout { grid-template-columns: 1fr; }
+            .sidebar {
+                position: static;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--line);
+                padding: 2rem;
+            }
+            .main-content { padding: 2.5rem 2rem 4rem; }
             footer { padding: 2rem; }
         }
     </style>
@@ -277,48 +316,57 @@
 
     <nav>
         <div class="dot-wrap">
-            <a href="index.html" style="text-decoration:none">
-                <div class="dot"></div>
-            </a>
+            <a href="index.html" style="text-decoration:none"><div class="dot"></div></a>
             <span class="tooltip">Home</span>
         </div>
         <div class="dot-wrap">
-            <a href="someone.html" style="text-decoration:none">
-                <div class="dot"></div>
-            </a>
+            <a href="games.html" style="text-decoration:none"><div class="dot"></div></a>
+            <span class="tooltip">Games</span>
+        </div>
+        <div class="dot-wrap">
+            <a href="someone.html" style="text-decoration:none"><div class="dot"></div></a>
             <span class="tooltip">Someone.</span>
         </div>
         <div class="dot-wrap">
-            <a href="privacy-policy.html" style="text-decoration:none">
-                <div class="dot"></div>
-            </a>
+            <div class="dot"></div>
             <span class="tooltip">Privacy Policy</span>
         </div>
         <div class="dot-wrap">
-            <a href="mailto:zuabino@gmail.com" style="text-decoration:none">
-                <div class="dot"></div>
-            </a>
+            <a href="mailto:zuabino@gmail.com" style="text-decoration:none"><div class="dot"></div></a>
             <span class="tooltip">Contact</span>
         </div>
     </nav>
 
-    <header>
-        <p class="studio">Pardon My French</p>
+    <div class="title-block">
+        <p class="title-eyebrow">Pardon My French</p>
         <h1>Privacy Policy</h1>
-        <p class="meta">Someone &nbsp;·&nbsp; Effective 6 May 2026</p>
-    </header>
+        <p class="title-meta">Someone &nbsp;·&nbsp; Effective 6 May 2026</p>
+    </div>
 
-    <main>
-        <p class="intro">
-            Someone is provided by Pardon My French at no cost. This policy explains how information is handled when you use the app. Using Someone means you agree to these terms.
-        </p>
+    <div class="content-layout">
 
-        <div class="section open">
-            <div class="section-toggle" onclick="toggle(this)">
-                <span class="section-title">Information We Collect</span>
-                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <div class="section-body">
+        <aside class="sidebar">
+            <p class="sidebar-label">Contents</p>
+            <nav class="sidebar-nav">
+                <a href="#collect" class="sidebar-link">Information We Collect</a>
+                <a href="#third-party" class="sidebar-link">Third-Party Services</a>
+                <a href="#advertising" class="sidebar-link">Advertising</a>
+                <a href="#log-data" class="sidebar-link">Log Data</a>
+                <a href="#retention" class="sidebar-link">Data Retention</a>
+                <a href="#children" class="sidebar-link">Children's Privacy</a>
+                <a href="#security" class="sidebar-link">Security</a>
+                <a href="#changes" class="sidebar-link">Changes to This Policy</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+
+            <p class="intro">
+                Someone is provided by Pardon My French at no cost. This policy explains how information is handled when you use the app. Using Someone means you agree to these terms.
+            </p>
+
+            <div class="policy-section" id="collect">
+                <h2 class="section-title">Information We Collect</h2>
                 <p>The app collects the following data to provide and improve the service:</p>
                 <ul>
                     <li>Device ID and Advertising ID</li>
@@ -329,14 +377,9 @@
                 </ul>
                 <p>Pardon My French does not directly store personal identifying information. Data is processed by the third-party services listed below.</p>
             </div>
-        </div>
 
-        <div class="section">
-            <div class="section-toggle" onclick="toggle(this)">
-                <span class="section-title">Third-Party Services</span>
-                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <div class="section-body">
+            <div class="policy-section" id="third-party">
+                <h2 class="section-title">Third-Party Services</h2>
                 <p>Someone uses third-party services that may collect data used to identify you. Each operates under its own privacy policy:</p>
                 <ul>
                     <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Play Services</a></li>
@@ -345,75 +388,46 @@
                     <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Crashlytics</a></li>
                 </ul>
             </div>
-        </div>
 
-        <div class="section">
-            <div class="section-toggle" onclick="toggle(this)">
-                <span class="section-title">Advertising</span>
-                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <div class="section-body">
+            <div class="policy-section" id="advertising">
+                <h2 class="section-title">Advertising</h2>
                 <p>Someone displays ads provided by AdMob. AdMob may use your device's advertising ID to serve relevant ads. You can opt out of personalised advertising through your device settings under Google → Ads.</p>
                 <p>Purchasing any in-game item removes ads for the duration of that session or permanently, depending on the purchase type.</p>
             </div>
-        </div>
 
-        <div class="section">
-            <div class="section-toggle" onclick="toggle(this)">
-                <span class="section-title">Log Data</span>
-                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <div class="section-body">
+            <div class="policy-section" id="log-data">
+                <h2 class="section-title">Log Data</h2>
                 <p>In the event of an error, the app collects log data via Firebase Crashlytics. This may include your device IP address, device name, operating system version, app configuration, time and date of use, and related diagnostics.</p>
             </div>
-        </div>
 
-        <div class="section">
-            <div class="section-toggle" onclick="toggle(this)">
-                <span class="section-title">Data Retention</span>
-                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <div class="section-body">
+            <div class="policy-section" id="retention">
+                <h2 class="section-title">Data Retention</h2>
                 <p>Data is retained only as long as necessary to provide the service, resolve disputes, and meet legal obligations. Third-party services retain data according to their own policies.</p>
                 <p>You can stop all data collection at any time by uninstalling Someone from your device.</p>
             </div>
-        </div>
 
-        <div class="section">
-            <div class="section-toggle" onclick="toggle(this)">
-                <span class="section-title">Children's Privacy</span>
-                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <div class="section-body">
+            <div class="policy-section" id="children">
+                <h2 class="section-title">Children's Privacy</h2>
                 <p>Someone is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided personal information through the app, please contact us and we will take immediate action to remove it.</p>
             </div>
-        </div>
 
-        <div class="section">
-            <div class="section-toggle" onclick="toggle(this)">
-                <span class="section-title">Security</span>
-                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <div class="section-body">
+            <div class="policy-section" id="security">
+                <h2 class="section-title">Security</h2>
                 <p>We use commercially reasonable means to protect your data. All data transmitted by the app is encrypted in transit. No method of electronic storage or internet transmission is completely secure, and absolute security cannot be guaranteed.</p>
             </div>
-        </div>
 
-        <div class="section">
-            <div class="section-toggle" onclick="toggle(this)">
-                <span class="section-title">Changes to This Policy</span>
-                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <div class="section-body">
+            <div class="policy-section" id="changes">
+                <h2 class="section-title">Changes to This Policy</h2>
                 <p>This policy may be updated from time to time. Changes will be posted on this page with a revised effective date. Continued use of Someone after changes constitutes acceptance of the updated policy.</p>
             </div>
-        </div>
 
-        <div class="contact-block">
-            <p class="label">Questions</p>
-            <p>If you have any questions about this privacy policy, reach out at <a href="mailto:zuabino@gmail.com">zuabino@gmail.com</a></p>
-        </div>
-    </main>
+            <div class="contact-block">
+                <p class="contact-label">Questions</p>
+                <p>If you have any questions about this privacy policy, reach out at <a href="mailto:zuabino@gmail.com">zuabino@gmail.com</a></p>
+            </div>
+
+        </main>
+    </div>
 
     <footer>
         <a href="index.html">← Pardon My French</a>
@@ -421,10 +435,21 @@
     </footer>
 
     <script>
-        function toggle(btn) {
-            const section = btn.closest('.section');
-            section.classList.toggle('open');
-        }
+        // Highlight active sidebar link on scroll
+        const sections = document.querySelectorAll('.policy-section[id]');
+        const links = document.querySelectorAll('.sidebar-link');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    links.forEach(l => l.classList.remove('active'));
+                    const active = document.querySelector(`.sidebar-link[href="#${entry.target.id}"]`);
+                    if (active) active.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+
+        sections.forEach(s => observer.observe(s));
     </script>
 
 </body>

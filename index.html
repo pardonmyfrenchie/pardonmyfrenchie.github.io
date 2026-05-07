@@ -4,25 +4,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pardon My French</title>
-    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
             --bg: #080808;
             --mint: #a8d5c2;
+            --ink: #c8c4bc;
+            --ink-soft: #555048;
+            --line: #181818;
         }
 
         html, body { width: 100%; height: 100%; }
 
         body {
             background: var(--bg);
+            color: var(--ink);
+            font-family: 'Outfit', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            font-family: 'IM Fell English', serif;
         }
 
         nav {
@@ -32,6 +36,7 @@
             justify-content: center;
             gap: 1.4rem;
             padding: 1.6rem 0;
+            z-index: 100;
         }
 
         .dot-wrap {
@@ -61,9 +66,10 @@
             transform: translateX(-50%);
             background: #111;
             color: var(--mint);
-            font-family: 'IM Fell English', serif;
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             padding: 0.35rem 0.75rem;
             white-space: nowrap;
@@ -84,10 +90,9 @@
 
         .dot-wrap:hover .tooltip { opacity: 1; }
 
-        h1 {
-            font-family: 'IM Fell English', serif;
-            font-weight: 400;
-            font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+        .studio-name {
+            font-size: clamp(0.75rem, 2vw, 1rem);
+            font-weight: 500;
             letter-spacing: 0.35em;
             color: var(--mint);
             text-transform: uppercase;
@@ -102,24 +107,23 @@
             <span class="tooltip">Home</span>
         </div>
         <div class="dot-wrap">
-            <a href="someone.html" style="text-decoration:none">
-                <div class="dot"></div>
-            </a>
+            <a href="games.html" style="text-decoration:none"><div class="dot"></div></a>
+            <span class="tooltip">Games</span>
+        </div>
+        <div class="dot-wrap">
+            <a href="someone.html" style="text-decoration:none"><div class="dot"></div></a>
             <span class="tooltip">Someone.</span>
         </div>
         <div class="dot-wrap">
-            <a href="privacy-policy.html" style="text-decoration:none">
-                <div class="dot"></div>
-            </a>
+            <a href="privacy-policy.html" style="text-decoration:none"><div class="dot"></div></a>
             <span class="tooltip">Privacy Policy</span>
         </div>
         <div class="dot-wrap">
-            <a href="mailto:zuabino@gmail.com" style="text-decoration:none">
-                <div class="dot"></div>
-            </a>
+            <a href="mailto:zuabino@gmail.com" style="text-decoration:none"><div class="dot"></div></a>
             <span class="tooltip">Contact</span>
         </div>
     </nav>
-    <h1>Pardon My French</h1>
+
+    <p class="studio-name">Pardon My French</p>
 </body>
 </html>
