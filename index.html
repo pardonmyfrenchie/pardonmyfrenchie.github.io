@@ -3,125 +3,72 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Pardon My French — Independent games with heart.">
     <title>Pardon My French</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
         :root {
             --bg: #080808;
             --mint: #a8d5c2;
             --ink: #c8c4bc;
             --ink-soft: #555048;
-            --line: #181818;
         }
-
-        html, body { width: 100%; height: 100%; }
-
         body {
             background: var(--bg);
             color: var(--ink);
             font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
+            text-align: center;
         }
-
         nav {
             position: fixed;
             top: 0; left: 0; right: 0;
             display: flex;
             justify-content: center;
-            gap: 1.4rem;
-            padding: 1.6rem 0;
+            gap: 1.6rem;
+            padding: 1.8rem 0;
             z-index: 100;
+            background: rgba(8,8,8,0.95);
+            backdrop-filter: blur(12px);
         }
-
-        .dot-wrap {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
+        .dot-wrap { position: relative; }
         .dot {
-            width: 10px;
-            height: 10px;
+            width: 11px; height: 11px;
             border-radius: 50%;
             border: 1px solid #3a3a3a;
-            background: transparent;
-            cursor: pointer;
-            transition: border-color 0.25s;
-            display: block;
+            transition: all 0.3s;
         }
-
         .dot-wrap:hover .dot { border-color: var(--mint); }
-
+        .dot-wrap.current .dot { background: var(--mint); border-color: var(--mint); }
         .tooltip {
-            position: absolute;
-            top: calc(100% + 10px);
-            left: 50%;
-            transform: translateX(-50%);
-            background: #111;
-            color: var(--mint);
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.62rem;
-            font-weight: 500;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            padding: 0.35rem 0.75rem;
-            white-space: nowrap;
+            position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%);
+            background: #111; color: var(--mint); font-size: 0.62rem;
+            letter-spacing: 0.15em; text-transform: uppercase;
+            padding: 0.4rem 0.8rem; white-space: nowrap;
+            opacity: 0; transition: opacity 0.2s; border: 1px solid #222;
             pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.2s;
-            border: 1px solid #1e1e1e;
         }
-
-        .tooltip::before {
-            content: '';
-            position: absolute;
-            bottom: 100%; left: 50%;
-            transform: translateX(-50%);
-            border: 4px solid transparent;
-            border-bottom-color: #1e1e1e;
-        }
-
         .dot-wrap:hover .tooltip { opacity: 1; }
-
         .studio-name {
             font-size: clamp(0.75rem, 2vw, 1rem);
             font-weight: 500;
             letter-spacing: 0.35em;
             color: var(--mint);
             text-transform: uppercase;
-            user-select: none;
         }
     </style>
 </head>
 <body>
     <nav>
-        <div class="dot-wrap">
-            <div class="dot"></div>
-            <span class="tooltip">Home</span>
-        </div>
-        <div class="dot-wrap">
-            <a href="games.html" style="text-decoration:none"><div class="dot"></div></a>
-            <span class="tooltip">Games</span>
-        </div>
-        <div class="dot-wrap">
-            <a href="someone.html" style="text-decoration:none"><div class="dot"></div></a>
-            <span class="tooltip">Someone.</span>
-        </div>
-        <div class="dot-wrap">
-            <a href="privacy-policy.html" style="text-decoration:none"><div class="dot"></div></a>
-            <span class="tooltip">Privacy Policy</span>
-        </div>
-        <div class="dot-wrap">
-            <a href="mailto:zuabino@gmail.com" style="text-decoration:none"><div class="dot"></div></a>
-            <span class="tooltip">Contact</span>
-        </div>
+        <div class="dot-wrap current"><div class="dot"></div><span class="tooltip">Home</span></div>
+        <div class="dot-wrap"><a href="games-landing.html" style="text-decoration:none"><div class="dot"></div></a><span class="tooltip">Games</span></div>
+        <div class="dot-wrap"><a href="privacy-landing.html" style="text-decoration:none"><div class="dot"></div></a><span class="tooltip">Privacy</span></div>
+        <div class="dot-wrap"><a href="mailto:zuabino@gmail.com" style="text-decoration:none"><div class="dot"></div></a><span class="tooltip">Contact</span></div>
     </nav>
 
     <p class="studio-name">Pardon My French</p>
