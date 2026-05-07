@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pardon My French</title>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #080808;
+            --mint: #a8d5c2;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background: var(--bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: 'IM Fell English', serif;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.4rem;
+            padding: 1.6rem 0;
+        }
+
+        .dot-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #2a2a2a;
+            cursor: pointer;
+            transition: background 0.25s;
+            display: block;
+        }
+
+        .dot-wrap:hover .dot {
+            background: var(--mint);
+        }
+
+        .tooltip {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: #111;
+            color: var(--mint);
+            font-family: 'IM Fell English', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.75rem;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            border: 1px solid #1e1e1e;
+        }
+
+        .tooltip::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid transparent;
+            border-bottom-color: #1e1e1e;
+        }
+
+        .dot-wrap:hover .tooltip {
+            opacity: 1;
+        }
+
+        /* LOGO */
+        h1 {
+            font-family: 'IM Fell English', serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+            letter-spacing: 0.35em;
+            color: var(--mint);
+            text-transform: uppercase;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="dot-wrap">
+            <div class="dot"></div>
+            <span class="tooltip">Home</span>
+        </div>
+        <div class="dot-wrap">
+            <a href="someone.html" style="text-decoration:none">
+                <div class="dot"></div>
+            </a>
+            <span class="tooltip">Someone.</span>
+        </div>
+        <div class="dot-wrap">
+            <a href="privacy-policy.html" style="text-decoration:none">
+                <div class="dot"></div>
+            </a>
+            <span class="tooltip">Privacy Policy</span>
+        </div>
+        <div class="dot-wrap">
+            <a href="mailto:zuabino@gmail.com" style="text-decoration:none">
+                <div class="dot"></div>
+            </a>
+            <span class="tooltip">Contact</span>
+        </div>
+    </nav>
+
+    <h1>Pardon My French</h1>
+
+</body>
+</html>
