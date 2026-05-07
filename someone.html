@@ -3,335 +3,81 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Someone. - Life Simulation by Pardon My French">
     <title>Someone. — Pardon My French</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        :root {
-            --bg: #080808;
-            --mint: #a8d5c2;
-            --ink: #c8c4bc;
-            --ink-soft: #555048;
-            --line: #181818;
-        }
-
-        html, body { width: 100%; }
-
-        body {
-            background: var(--bg);
-            color: var(--ink);
-            font-family: 'Outfit', sans-serif;
-            min-height: 100vh;
-        }
-
-        /* NAV */
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 1.4rem;
-            padding: 1.6rem 0;
-            z-index: 100;
-            background: rgba(8,8,8,0.92);
-            backdrop-filter: blur(8px);
-        }
-
-        .dot-wrap {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            border: 1px solid #3a3a3a;
-            background: transparent;
-            cursor: pointer;
-            transition: border-color 0.25s;
-            display: block;
-        }
-
+        :root { --bg: #080808; --mint: #a8d5c2; --ink: #c8c4bc; --ink-soft: #555048; --line: #181818; }
+        body { background: var(--bg); color: var(--ink); font-family: 'Outfit', sans-serif; min-height: 100vh; padding-top: 110px; }
+        nav { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: center; gap: 1.6rem; padding: 1.8rem 0;
+              z-index: 100; background: rgba(8,8,8,0.95); backdrop-filter: blur(12px); }
+        .dot-wrap { position: relative; }
+        .dot { width: 11px; height: 11px; border-radius: 50%; border: 1px solid #3a3a3a; transition: all 0.3s; }
         .dot-wrap:hover .dot { border-color: var(--mint); }
-
-        .tooltip {
-            position: absolute;
-            top: calc(100% + 10px);
-            left: 50%;
-            transform: translateX(-50%);
-            background: #111;
-            color: var(--mint);
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.62rem;
-            font-weight: 500;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            padding: 0.35rem 0.75rem;
-            white-space: nowrap;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.2s;
-            border: 1px solid #1e1e1e;
-        }
-
-        .tooltip::before {
-            content: '';
-            position: absolute;
-            bottom: 100%; left: 50%;
-            transform: translateX(-50%);
-            border: 4px solid transparent;
-            border-bottom-color: #1e1e1e;
-        }
-
+        .dot-wrap.current .dot { background: var(--mint); border-color: var(--mint); }
+        .tooltip { position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); background: #111; color: var(--mint);
+                   font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.4rem 0.8rem; opacity: 0; transition: opacity 0.2s; border: 1px solid #222; }
         .dot-wrap:hover .tooltip { opacity: 1; }
 
-        /* HERO */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 8rem 10vw 5rem;
-            border-bottom: 1px solid var(--line);
-        }
-
-        .hero-eyebrow {
-            font-size: 0.62rem;
+        .header-studio {
+            font-size: clamp(0.55rem, 1.5vw, 0.72rem);
             font-weight: 500;
-            letter-spacing: 0.3em;
+            letter-spacing: 0.35em;
+            color: #555048;
             text-transform: uppercase;
-            color: var(--ink-soft);
-            margin-bottom: 1.5rem;
+            text-align: center;
+            padding: 1.2rem 0 0.8rem;
         }
-
-        .hero-title {
-            font-size: clamp(0.9rem, 1.8vw, 1.2rem);
-            font-weight: 500;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--mint);
-            margin-bottom: 1rem;
-        }
-
-        .hero-tagline {
-            font-size: clamp(2.2rem, 6vw, 5rem);
-            font-weight: 300;
-            letter-spacing: -0.02em;
-            color: var(--ink);
-            line-height: 1.1;
-            max-width: 800px;
-            margin-bottom: 3.5rem;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.6rem;
-            background: transparent;
-            border: 1px solid #222;
-            color: var(--mint);
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.68rem;
-            font-weight: 500;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: border-color 0.2s, background 0.2s;
-        }
-
-        .btn:hover {
-            border-color: var(--mint);
-            background: rgba(168,213,194,0.04);
-        }
-
-        .btn-ghost {
-            color: var(--ink-soft);
-            border-color: #181818;
-        }
-
-        .btn-ghost:hover {
-            border-color: #3a3a3a;
-            color: var(--ink);
-            background: transparent;
-        }
-
-        /* DESCRIPTION */
-        .desc-section {
-            padding: 5rem 10vw;
-            border-bottom: 1px solid var(--line);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            align-items: start;
-        }
-
-        .desc-label {
-            font-size: 0.6rem;
-            font-weight: 500;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--ink-soft);
-            margin-bottom: 1.5rem;
-            position: sticky;
-            top: 6rem;
-        }
-
-        .desc-body p {
-            font-size: 0.9rem;
-            font-weight: 300;
-            color: var(--ink-soft);
-            line-height: 1.9;
-            margin-bottom: 1.2rem;
-        }
-
-        .desc-body p:last-child { margin-bottom: 0; }
-
-        /* DETAILS STRIP */
-        .details-strip {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            border-bottom: 1px solid var(--line);
-        }
-
-        .detail-cell {
-            padding: 2.5rem 2rem 2.5rem 10vw;
-            border-right: 1px solid var(--line);
-        }
-
+        .hero { padding: 3rem 10vw 4rem; text-align: center; }
+        .hero-title { font-size: clamp(2.2rem, 6vw, 3.8rem); font-weight: 300; letter-spacing: -0.02em; color: var(--mint); margin-bottom: 1rem; }
+        .hero-tagline { font-size: 1.25rem; color: var(--ink-soft); max-width: 700px; margin: 0 auto; line-height: 1.4; }
+        .desc-section { padding: 5rem 10vw; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; }
+        .detail-strip { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); }
+        .detail-cell { padding: 2.5rem 2rem 2.5rem 10vw; border-right: 1px solid var(--line); }
         .detail-cell:last-child { border-right: none; }
-
-        .detail-label {
-            font-size: 0.55rem;
-            font-weight: 500;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--ink-soft);
-            margin-bottom: 0.5rem;
-        }
-
-        .detail-value {
-            font-size: 0.82rem;
-            font-weight: 400;
-            color: var(--mint);
-        }
-
-        /* FOOTER */
-        footer {
-            padding: 2.5rem 10vw;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        footer a {
-            font-size: 0.65rem;
-            font-weight: 500;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--ink-soft);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        footer a:hover { color: var(--mint); }
-
-        footer p {
-            font-size: 0.65rem;
-            color: #2a2a2a;
-            letter-spacing: 0.1em;
-        }
-
+        footer { padding: 2.5rem 10vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid var(--line); }
         @media (max-width: 768px) {
-            .hero { padding: 7rem 2rem 4rem; }
-            .desc-section { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 2rem; }
-            .desc-label { position: static; }
-            .details-strip { grid-template-columns: 1fr 1fr; }
+            .desc-section { grid-template-columns: 1fr; padding: 4rem 2rem; }
+            .detail-strip { grid-template-columns: 1fr 1fr; }
             .detail-cell { padding: 2rem; }
-            footer { padding: 2rem; }
         }
     </style>
 </head>
 <body>
-
     <nav>
-        <div class="dot-wrap">
-            <a href="index.html" style="text-decoration:none"><div class="dot"></div></a>
-            <span class="tooltip">Home</span>
-        </div>
-        <div class="dot-wrap">
-            <a href="games.html" style="text-decoration:none"><div class="dot"></div></a>
-            <span class="tooltip">Games</span>
-        </div>
-        <div class="dot-wrap">
-            <div class="dot"></div>
-            <span class="tooltip">Someone.</span>
-        </div>
-        <div class="dot-wrap">
-            <a href="privacy-policy.html" style="text-decoration:none"><div class="dot"></div></a>
-            <span class="tooltip">Privacy Policy</span>
-        </div>
-        <div class="dot-wrap">
-            <a href="mailto:zuabino@gmail.com" style="text-decoration:none"><div class="dot"></div></a>
-            <span class="tooltip">Contact</span>
-        </div>
+        <div class="dot-wrap"><a href="index.html" style="text-decoration:none"><div class="dot"></div></a><span class="tooltip">Home</span></div>
+        <div class="dot-wrap"><a href="games-landing.html" style="text-decoration:none"><div class="dot"></div></a><span class="tooltip">Games</span></div>
+        <div class="dot-wrap"><a href="privacy-landing.html" style="text-decoration:none"><div class="dot"></div></a><span class="tooltip">Privacy</span></div>
+        <div class="dot-wrap"><a href="mailto:zuabino@gmail.com" style="text-decoration:none"><div class="dot"></div></a><span class="tooltip">Contact</span></div>
     </nav>
 
+    <div class="header-studio">Pardon My French</div>
+
     <section class="hero">
-        <p class="hero-eyebrow">Pardon My French · Life Simulation · Android</p>
-        <p class="hero-title">Someone.</p>
-        <h1 class="hero-tagline">Suncity looks like a good place to start over.</h1>
-        <div class="hero-actions">
-            <a href="https://play.google.com" class="btn">Pre-register on Google Play</a>
-            <a href="games.html" class="btn btn-ghost">← All games</a>
-        </div>
+        <h1 class="hero-title">Someone.</h1>
+        <p class="hero-tagline">Suncity looks like a good place to start over.</p>
     </section>
 
     <section class="desc-section">
-        <p class="desc-label">About</p>
-        <div class="desc-body">
+        <p style="font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--ink-soft);">About</p>
+        <div style="font-size:0.9rem; line-height:1.9; color:var(--ink-soft);">
             <p>Everyone here has a history. Some of them will share it with you. Some of them will make it your problem.</p>
             <p>Dress how you want. Love who you want. Build something — a career, a reputation, a life — and watch what the neighbours do with that information.</p>
             <p>Some stories end in a wedding. Some end in a transfer of assets.</p>
         </div>
     </section>
 
-    <div class="details-strip">
-        <div class="detail-cell">
-            <p class="detail-label">Platform</p>
-            <p class="detail-value">Android</p>
-        </div>
-        <div class="detail-cell">
-            <p class="detail-label">Genre</p>
-            <p class="detail-value">Life Simulation</p>
-        </div>
-        <div class="detail-cell">
-            <p class="detail-label">Rating</p>
-            <p class="detail-value">PEGI 12</p>
-        </div>
-        <div class="detail-cell">
-            <p class="detail-label">Status</p>
-            <p class="detail-value">Coming soon</p>
-        </div>
+    <div class="detail-strip">
+        <div class="detail-cell"><p style="font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-soft);">Platform</p><p style="color:var(--mint);">Android</p></div>
+        <div class="detail-cell"><p style="font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-soft);">Genre</p><p style="color:var(--mint);">Life Simulation</p></div>
+        <div class="detail-cell"><p style="font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-soft);">Rating</p><p style="color:var(--mint);">PEGI 12</p></div>
+        <div class="detail-cell"><p style="font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-soft);">Status</p><p style="color:var(--mint);">Coming soon</p></div>
     </div>
 
     <footer>
-        <a href="games.html">← Games</a>
-        <p>© 2026</p>
+        <a href="games-landing.html" style="color:var(--ink-soft);text-decoration:none;">← Games</a>
+        <p style="color:#2a2a2a;">© 2026</p>
     </footer>
-
 </body>
 </html>
