@@ -2,99 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Games — Pardon My French</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root { --bg: #080808; --mint: #a8d5c2; --ink: #c8c4bc; --ink-soft: #555048; --card: #0f0f0f; }
-        body { background: var(--bg); color: var(--ink); font-family: 'Outfit', sans-serif; min-height: 100vh; padding-top: 110px; }
-        nav { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: center; gap: 1.6rem; padding: 1.8rem 0;
-              z-index: 100; background: rgba(8,8,8,0.95); backdrop-filter: blur(12px); }
-        .dot-wrap { position: relative; }
-        .dot { width: 11px; height: 11px; border-radius: 50%; border: 1px solid #3a3a3a; transition: all 0.3s; }
-        .dot-wrap:hover .dot { border-color: var(--mint); }
-        .dot-wrap.current .dot { background: var(--mint); border-color: var(--mint); }
-        .tooltip { position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); background: #111; color: var(--mint);
-                   font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.4rem 0.8rem; opacity: 0; transition: opacity 0.2s; border: 1px solid #222; }
-        .dot-wrap:hover .tooltip { opacity: 1; }
-
-        .header-studio {
-            font-size: clamp(0.55rem, 1.5vw, 0.72rem);
-            font-weight: 500;
-            letter-spacing: 0.35em;
-            color: #555048;
-            text-transform: uppercase;
-            text-align: center;
-            padding: 1.2rem 0 0.8rem;
-        }
-        .games-grid {
-            padding: 2rem 6vw 6rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .game-card {
-            background: var(--card);
-            border-radius: 12px;
-            overflow: hidden;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        .game-card:hover { transform: translateY(-16px); box-shadow: 0 40px 70px rgba(0,0,0,0.7); }
-        .cover { height: 380px; background-size: cover; background-position: center; position: relative; }
-        .cover::after { content: ''; position: absolute; inset: 0; background: linear-gradient(transparent, rgba(8,8,8,0.85)); }
-        .card-info { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
-        .card-title { font-size: 1.65rem; font-weight: 300; margin-bottom: 0.8rem; }
-        .platforms { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0.8rem 0; }
-        .platform-badge { font-size: 0.62rem; padding: 0.35rem 0.75rem; border: 1px solid #333; border-radius: 4px; color: var(--ink-soft); }
-        .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: auto; }
-        .tag { font-size: 0.6rem; padding: 0.25rem 0.7rem; background: #1a1a1a; border-radius: 9999px; color: var(--ink-soft); }
-        .btn { margin-top: 1.2rem; padding: 0.9rem; text-align: center; border-radius: 6px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.75rem; }
+        body { background: var(--bg); color: var(--ink); font-family: 'Outfit', sans-serif; padding: 2rem; overflow-x: hidden; }
+        
+        .games-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .game-card { background: var(--card); border-radius: 8px; overflow: hidden; text-decoration: none; color: inherit; transition: all 0.3s ease; display: flex; flex-direction: column; border: 1px solid #1a1a1a; }
+        .game-card:hover { border-color: #333; transform: translateY(-5px); }
+        .cover { height: 200px; background-size: cover; background-position: center; }
+        .card-info { padding: 1.2rem; flex: 1; }
+        .card-title { font-size: 1.2rem; font-weight: 300; margin-bottom: 0.5rem; }
+        .platform-badge { font-size: 0.55rem; padding: 0.2rem 0.5rem; border: 1px solid #333; border-radius: 4px; color: var(--ink-soft); margin-right: 5px; }
+        .btn { margin-top: 1rem; padding: 0.7rem; text-align: center; border-radius: 4px; font-weight: 500; text-transform: uppercase; font-size: 0.65rem; }
         .btn-primary { background: var(--mint); color: #000; }
-        .btn-disabled { background: #222; color: #666; cursor: default; }
+        .btn-disabled { background: #1a1a1a; color: #444; }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="dot-wrap"><a href="index.html" style="text-decoration:none"><div class="dot"></div></a><span class="tooltip">Home</span></div>
-        <div class="dot-wrap current"><div class="dot"></div><span class="tooltip">Games</span></div>
-        <div class="dot-wrap"><a href="privacy-landing.html" style="text-decoration:none"><div class="dot"></div></a><span class="tooltip">Privacy</span></div>
-        <div class="dot-wrap"><a href="mailto:zuabino@gmail.com" style="text-decoration:none"><div class="dot"></div></a><span class="tooltip">Contact</span></div>
-    </nav>
-
-    <div class="header-studio">Pardon My French</div>
-
     <div class="games-grid">
         <a href="someone.html" class="game-card">
             <div class="cover" style="background-image: url('https://picsum.photos/id/1015/800/600')"></div>
             <div class="card-info">
                 <h2 class="card-title">Someone.</h2>
-                <div class="platforms"><span class="platform-badge">Android</span></div>
-                <div class="tags">
-                    <span class="tag">Life Sim</span>
-                    <span class="tag">Narrative</span>
-                    <span class="tag">PEGI 12</span>
-                </div>
-                <div class="btn btn-primary">Pre-register on Google Play</div>
+                <div><span class="platform-badge">Android</span></div>
+                <div class="btn btn-primary">View Details</div>
             </div>
         </a>
-
         <div class="game-card">
             <div class="cover" style="background-image: url('https://picsum.photos/id/201/800/600')"></div>
             <div class="card-info">
                 <h2 class="card-title">Welcome to Hollywood</h2>
-                <div class="platforms"><span class="platform-badge">TBD</span></div>
-                <div class="tags">
-                    <span class="tag">Simulation</span>
-                    <span class="tag">Photography</span>
-                </div>
+                <div><span class="platform-badge">TBD</span></div>
                 <div class="btn btn-disabled">In Development</div>
             </div>
         </div>
