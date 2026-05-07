@@ -3,49 +3,30 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Games by Pardon My French">
     <title>Games — Pardon My French</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root { --bg: #080808; --mint: #a8d5c2; --ink: #c8c4bc; --ink-soft: #555048; }
-        body {
-            background: var(--bg);
-            color: var(--ink);
-            font-family: 'Outfit', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 20px;
-        }
-        nav { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: center; gap: 1.6rem;
-              padding: 1.8rem 0; z-index: 100; background: rgba(8,8,8,0.95); backdrop-filter: blur(12px); }
+        :root { --bg: #080808; --mint: #a8d5c2; --ink: #c8c4bc; --card: #0f0f0f; }
+        body { background: var(--bg); color: var(--ink); font-family: 'Outfit', sans-serif; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+        
+        /* Navigation */
+        nav { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: center; gap: 1.6rem; padding: 1.8rem 0; z-index: 100; background: rgba(8,8,8,0.95); backdrop-filter: blur(12px); }
         .dot-wrap { position: relative; }
-        .dot { width: 11px; height: 11px; border-radius: 50%; border: 1px solid #3a3a3a; transition: all 0.3s; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; border: 1px solid #3a3a3a; transition: all 0.3s; cursor: pointer;}
         .dot-wrap:hover .dot { border-color: var(--mint); }
         .dot-wrap.current .dot { background: var(--mint); border-color: var(--mint); }
-        .tooltip { position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); background: #111; color: var(--mint);
-                   font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.4rem 0.8rem; opacity: 0; transition: opacity 0.2s; border: 1px solid #222; }
+        .tooltip { position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); background: #111; color: var(--mint); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.4rem 0.8rem; opacity: 0; transition: opacity 0.2s; border: 1px solid #222; pointer-events: none; white-space: nowrap; }
         .dot-wrap:hover .tooltip { opacity: 1; }
 
-        .header-studio {
-            font-size: clamp(0.55rem, 1.5vw, 0.72rem);
-            font-weight: 500;
-            letter-spacing: 0.35em;
-            color: #555048;
-            text-transform: uppercase;
-            margin-bottom: 0.6rem;
-        }
-        .page-title {
-            font-size: clamp(0.75rem, 2vw, 1rem);
-            font-weight: 500;
-            letter-spacing: 0.35em;
-            color: var(--mint);
-            text-transform: uppercase;
-        }
+        .page-title { font-size: clamp(0.75rem, 2vw, 1rem); font-weight: 500; letter-spacing: 0.35em; color: var(--mint); text-transform: uppercase; margin-bottom: 1.5rem; }
+
+        /* Overlay Window */
+        #overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); z-index: 1000; align-items: center; justify-content: center; padding: 40px; }
+        .window { width: 100%; max-width: 1100px; height: 80vh; background: var(--bg); border: 1px solid #222; border-radius: 12px; position: relative; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 50px 100px rgba(0,0,0,0.9); }
+        .close-btn { position: absolute; top: 20px; right: 20px; color: #555; cursor: pointer; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; z-index: 10; }
+        .close-btn:hover { color: var(--mint); }
+        iframe { border: none; width: 100%; height: 100%; }
     </style>
 </head>
 <body>
@@ -56,7 +37,23 @@
         <div class="dot-wrap"><a href="mailto:zuabino@gmail.com" style="text-decoration:none"><div class="dot"></div></a><span class="tooltip">Contact</span></div>
     </nav>
 
-    <div class="header-studio">Pardon My French</div>
     <p class="page-title">Games</p>
+    
+    <div class="dot-wrap" onclick="openGames()">
+        <div class="dot"></div>
+        <span class="tooltip">View Collection</span>
+    </div>
+
+    <div id="overlay">
+        <div class="window">
+            <div class="close-btn" onclick="closeGames()">Close [X]</div>
+            <iframe src="games.html"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function openGames() { document.getElementById('overlay').style.display = 'flex'; }
+        function closeGames() { document.getElementById('overlay').style.display = 'none'; }
+    </script>
 </body>
 </html>
