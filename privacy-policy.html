@@ -1,61 +1,307 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width'>
-    <title>Privacy Policy</title>
-    <style> body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding:1em; } </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Privacy Policy — Someone</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #f7f5f2;
+            --ink: #1a1814;
+            --ink-soft: #6b6760;
+            --accent: #c8a96e;
+            --line: #e2dfd9;
+            --card: #ffffff;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 300;
+            line-height: 1.75;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 4rem 2rem 2rem;
+            max-width: 720px;
+            margin: 0 auto;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .studio {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+
+        .meta {
+            font-size: 0.8rem;
+            color: var(--ink-soft);
+            letter-spacing: 0.05em;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 3rem 2rem 6rem;
+        }
+
+        .intro {
+            font-size: 1rem;
+            color: var(--ink-soft);
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .section {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .section-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            cursor: pointer;
+            user-select: none;
+            gap: 1rem;
+        }
+
+        .section-toggle:hover .section-title {
+            color: var(--accent);
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            transition: color 0.2s;
+        }
+
+        .chevron {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            color: var(--ink-soft);
+            transition: transform 0.3s ease;
+        }
+
+        .section.open .chevron {
+            transform: rotate(180deg);
+        }
+
+        .section-body {
+            display: none;
+            padding-bottom: 1.75rem;
+            font-size: 0.92rem;
+            color: var(--ink-soft);
+        }
+
+        .section.open .section-body {
+            display: block;
+        }
+
+        .section-body p { margin-bottom: 1rem; }
+        .section-body p:last-child { margin-bottom: 0; }
+
+        .section-body ul {
+            padding-left: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-body li {
+            margin-bottom: 0.4rem;
+        }
+
+        .section-body a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .section-body a:hover {
+            border-color: var(--accent);
+        }
+
+        .contact-block {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 2px;
+        }
+
+        .contact-block .label {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .contact-block p {
+            font-size: 0.9rem;
+            color: var(--ink-soft);
+        }
+
+        .contact-block a {
+            color: var(--ink);
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.75rem;
+            color: var(--ink-soft);
+            letter-spacing: 0.05em;
+        }
+    </style>
 </head>
 <body>
-    <h2>Privacy Policy</h2>
-    <p><strong>Pardon My French</strong> built the <strong>Someone</strong> app as a <strong>Free</strong> app. This SERVICE is provided by Pardon My French at no cost and is intended for use as is.</p>
-    
-    <p>This page is used to inform visitors regarding my policies with the collection, use, and disclosure of Personal Information if anyone decided to use my Service.</p>
-    
-    <p>If you choose to use my Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that I collect is used for providing and improving the Service. I will not use or share your information with anyone except as described in this Privacy Policy.</p>
-    
-    <h3>Information Collection and Use</h3>
-    <p>For a better experience, while using our Service, I may require you to provide us with certain personally identifiable information. The information that I request will be retained on your device and is not collected by me in any way.</p>
-    <p>The app may collect the following information:</p><ul><li>Device ID</li><li>Cookies</li><li>Usage Data</li><li>Crash Logs</li><li>Payment Information</li></ul>
-    <p>The app does use third-party services that may collect information used to identify you.</p><p>Link to privacy policy of third-party service providers used by the app:</p><ul><li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Play Services</a></li></ul>
 
-    <h3>Log Data</h3>
-    <p>I want to inform you that whenever you use my Service, in a case of an error in the app I collect data and information (through third-party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol ("IP") address, device name, operating system version, the configuration of the app when utilizing my Service, the time and date of your use of the Service, and other statistics.</p>
+<header>
+    <p class="studio">Pardon My French</p>
+    <h1>Privacy Policy</h1>
+    <p class="meta">Someone &nbsp;·&nbsp; Effective 6 May 2026</p>
+</header>
 
-    <h3>Cookies</h3>
-    <p>Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.</p>
-    <p>This Service does not use these "cookies" explicitly. However, the app may use third-party code and libraries that use "cookies" to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Service.</p>
+<main>
+    <p class="intro">
+        Someone is provided by Pardon My French at no cost. This policy explains how information is handled when you use the app. Using Someone means you agree to these terms.
+    </p>
 
-    <h3>Service Providers</h3>
-    <p>I may employ third-party companies and individuals due to the following reasons:</p>
-    <ul>
-        <li>To facilitate our Service;</li>
-        <li>To provide the Service on our behalf;</li>
-        <li>To perform Service-related services; or</li>
-        <li>To assist us in analyzing how our Service is used.</li>
-    </ul>
-    <p>I want to inform users of this Service that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.</p>
+    <div class="section open">
+        <div class="section-toggle" onclick="toggle(this)">
+            <span class="section-title">Information We Collect</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="section-body">
+            <p>The app collects the following data to provide and improve the service:</p>
+            <ul>
+                <li>Device ID and Advertising ID</li>
+                <li>Usage data and app interactions</li>
+                <li>Crash logs and diagnostics</li>
+                <li>Payment information (for in-app purchases)</li>
+                <li>Cookies used by third-party services</li>
+            </ul>
+            <p>Pardon My French does not directly store personal identifying information. Data is processed by the third-party services listed below.</p>
+        </div>
+    </div>
 
-    <h3>Security</h3>
-    <p>I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security.</p>
+    <div class="section">
+        <div class="section-toggle" onclick="toggle(this)">
+            <span class="section-title">Third-Party Services</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="section-body">
+            <p>Someone uses third-party services that may collect data used to identify you. Each operates under its own privacy policy:</p>
+            <ul>
+                <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Play Services</a></li>
+                <li><a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">AdMob</a></li>
+                <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Google Analytics for Firebase</a></li>
+                <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Crashlytics</a></li>
+            </ul>
+        </div>
+    </div>
 
-    <h3>Links to Other Sites</h3>
-    <p>This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by me. Therefore, I strongly advise you to review the Privacy Policy of these websites. I have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.</p>
+    <div class="section">
+        <div class="section-toggle" onclick="toggle(this)">
+            <span class="section-title">Advertising</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="section-body">
+            <p>Someone displays ads provided by AdMob. AdMob may use your device's advertising ID to serve relevant ads. You can opt out of personalised advertising through your device settings under Google → Ads.</p>
+            <p>Purchasing any in-game item removes ads for the duration of that session or permanently, depending on the purchase type.</p>
+        </div>
+    </div>
 
-    <h3>Data Retention Policy</h3>
-    <p>I will retain your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. I will retain and use your Personal Data to the extent necessary to comply with my legal obligations (for example, if I am required to retain your data to comply with applicable laws), resolve disputes, and enforce my legal agreements and policies.</p>
+    <div class="section">
+        <div class="section-toggle" onclick="toggle(this)">
+            <span class="section-title">Log Data</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="section-body">
+            <p>In the event of an error, the app collects log data via Firebase Crashlytics. This may include your device IP address, device name, operating system version, app configuration, time and date of use, and related diagnostics.</p>
+        </div>
+    </div>
 
-    <h3>Opt-Out Rights</h3>
-    <p>You can stop all collection of information by the App easily by uninstalling the App. You may use the standard uninstall processes as may be available as part of your mobile device or via the mobile application marketplace or network.</p>
+    <div class="section">
+        <div class="section-toggle" onclick="toggle(this)">
+            <span class="section-title">Data Retention</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="section-body">
+            <p>Data is retained only as long as necessary to provide the service, resolve disputes, and meet legal obligations. Third-party services retain data according to their own policies.</p>
+            <p>You can stop all data collection at any time by uninstalling Someone from your device.</p>
+        </div>
+    </div>
 
-    <h3>Children's Privacy</h3>
-    <p>These Services do not address anyone under the age of 13. I do not knowingly collect personally identifiable information from children under 13. In the case I discover that a child under 13 has provided me with personal information, I immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact me so that I will be able to do the necessary actions.</p>
+    <div class="section">
+        <div class="section-toggle" onclick="toggle(this)">
+            <span class="section-title">Children's Privacy</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="section-body">
+            <p>Someone is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided personal information through the app, please contact us and we will take immediate action to remove it.</p>
+        </div>
+    </div>
 
-    <h3>Changes to This Privacy Policy</h3>
-    <p>I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page.</p>
-    <p>This policy is effective as of 2026-05-06</p>
+    <div class="section">
+        <div class="section-toggle" onclick="toggle(this)">
+            <span class="section-title">Security</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="section-body">
+            <p>We use commercially reasonable means to protect your data. All data transmitted by the app is encrypted in transit. No method of electronic storage or internet transmission is completely secure, and absolute security cannot be guaranteed.</p>
+        </div>
+    </div>
 
-    <h3>Contact Us</h3>
-    <p>If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at zuabino@gmail.com.</p>
+    <div class="section">
+        <div class="section-toggle" onclick="toggle(this)">
+            <span class="section-title">Changes to This Policy</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="section-body">
+            <p>This policy may be updated from time to time. Changes will be posted on this page with a revised effective date. Continued use of Someone after changes constitutes acceptance of the updated policy.</p>
+        </div>
+    </div>
+
+    <div class="contact-block">
+        <p class="label">Questions</p>
+        <p>If you have any questions about this privacy policy, reach out at <a href="mailto:zuabino@gmail.com">zuabino@gmail.com</a></p>
+    </div>
+</main>
+
+<footer>© 2026 Pardon My French</footer>
+
+<script>
+    function toggle(btn) {
+        const section = btn.closest('.section');
+        section.classList.toggle('open');
+    }
+</script>
+
 </body>
 </html>
