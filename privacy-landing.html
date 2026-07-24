@@ -17,9 +17,7 @@
         .tooltip { position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); background: #111; color: var(--mint); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.4rem 0.8rem; opacity: 0; transition: opacity 0.2s; border: 1px solid #222; pointer-events: none; white-space: nowrap; }
         .dot-wrap:hover .tooltip { opacity: 1; }
         .page-title { font-size: clamp(0.75rem, 2vw, 1rem); font-weight: 500; letter-spacing: 0.35em; color: var(--mint); text-transform: uppercase; margin-bottom: 1.5rem; }
-        .actions-container { display: flex; gap: 2rem; align-items: center; justify-content: center; }
-        .action-item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
-        .action-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: #666; }
+        .actions-container { display: flex; gap: 1.6rem; align-items: center; justify-content: center; }
         #overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); z-index: 1000; align-items: center; justify-content: center; padding: 40px; }
         .window { width: 100%; max-width: 900px; height: 80vh; background: var(--bg); border: 1px solid #222; border-radius: 12px; position: relative; overflow: hidden; box-shadow: 0 50px 100px rgba(0,0,0,0.9); }
         .close-btn { position: absolute; top: 20px; right: 20px; color: #555; cursor: pointer; font-size: 0.7rem; text-transform: uppercase; z-index: 10; transition: color 0.2s; }
@@ -35,23 +33,17 @@
         <div class="dot-wrap"><a href="mailto:zuabino@gmail.com" style="text-decoration:none"><div class="dot"></div></a><span class="tooltip">Contact</span></div>
     </nav>
 
-    <p class="page-title">Legal & Policy</p>
+    <p class="page-title">Privacy & Terms</p>
 
     <div class="actions-container">
-        <div class="action-item">
-            <div class="dot-wrap" onclick="openDoc('privacy-policy.html')">
-                <div class="dot"></div>
-                <span class="tooltip">Privacy Policy</span>
-            </div>
-            <span class="action-label">Privacy Policy</span>
+        <div class="dot-wrap" onclick="openDoc('privacy-policy.html')">
+            <div class="dot"></div>
+            <span class="tooltip">Privacy Policy</span>
         </div>
 
-        <div class="action-item">
-            <div class="dot-wrap" onclick="openDoc('prereg-terms.html')">
-                <div class="dot"></div>
-                <span class="tooltip">Pre-Reg Terms</span>
-            </div>
-            <span class="action-label">Pre-Reg Terms</span>
+        <div class="dot-wrap" onclick="openDoc('prereg-terms.html')">
+            <div class="dot"></div>
+            <span class="tooltip">Pre-Reg Terms</span>
         </div>
     </div>
 
